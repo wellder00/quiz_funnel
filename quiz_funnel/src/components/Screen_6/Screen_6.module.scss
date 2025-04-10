@@ -1,0 +1,114 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  padding: 20px;
+  max-width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.formBox {
+  border: 2px solid black;
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.questionBox {
+  border-bottom: 2px solid black;
+}
+
+.questionHeader {
+  border-bottom: 1px solid black;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.questionBody {
+  padding: 20px;
+  min-height: 100px;
+  text-align: center;
+}
+
+.buttonsRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+.buttonsRow button {
+  width: auto;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.progressBar {
+  border-top: 2px solid black;
+  padding: 10px;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+}
+
+.progressOuter {
+  height: 10px;
+  background-color: #eee;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.progressInner {
+  height: 100%;
+  background-color: green;
+}
+
+.recommendationButton {
+  background-color: #ff6b00;
+  color: white;
+  font-size: 1.25rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+
+  &:hover {
+    background-color: #e65c00;
+  }
+}
+
+.loader {
+  border: 4px solid #f3f3f3; 
+  border-top: 4px solid #3498db; 
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

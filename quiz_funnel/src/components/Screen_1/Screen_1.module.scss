@@ -1,0 +1,96 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0;
+  max-width: 100%;
+  min-height: 100vh; /* Контейнер занимает всю высоту экрана */
+  box-sizing: border-box;
+  overflow: hidden; /* Убираем скролл */
+}
+
+.imgContainer {
+  position: relative;
+  width: 100%;
+  height: 100%; /* Контейнер изображения занимает всю высоту экрана */
+}
+
+.img {
+  width: 100%;
+  height: 100%; /* Растягиваем изображение на всю высоту */
+  object-fit: cover; /* Сохраняем пропорции, обрезая лишнее */
+  display: block;
+}
+
+.text {
+  position: absolute;
+  top: 10%; /* Текст в верхней части изображения */
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 20px;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.button {
+  background-color: #ff6b00;
+  color: white;
+  font-size: 1.25rem;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+
+  &:hover {
+    background-color: #e65c00;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0;
+  }
+
+  .imgContainer {
+    max-width: 100%;
+    height: 100%;
+  }
+
+  .img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .text {
+    font-size: 14px;
+    padding: 0.5rem;
+  }
+
+  .button {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+// @media (max-width: 680px) {
+//   .img {
+//     content: url("./slide2.png"); 
+//     width: 100%;
+//     height: auto; 
+//     object-fit: cover;
+//   }
+
+//   .text {
+//     font-size: 12px;
+//     padding: 0.5rem;
+//   }
+// }

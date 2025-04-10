@@ -1,0 +1,78 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  padding: 20px;
+  max-width: 100%;
+  min-height: 100vh; /* Контейнер занимает всю высоту экрана */
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.formBox {
+  border: 2px solid black;
+  width: 100%;
+  max-width: 300px; /* Ограничиваем ширину формы */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.questionBox {
+  border-bottom: 2px solid black;
+}
+
+.questionHeader {
+  border-bottom: 1px solid black;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.questionBody {
+  padding: 20px;
+  min-height: 100px;
+  text-align: center;
+}
+
+.buttonsRow {
+  display: flex;
+  justify-content: space-around;
+  border-top: 2px solid black;
+  padding: 10px;
+  flex-wrap: wrap;
+}
+
+.buttonsRow button {
+  width: auto;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.progressBar {
+  border-top: 2px solid black;
+  padding: 10px;
+  width: 100%;
+  max-width: 300px; /* Ограничиваем ширину прогресс-бара */
+  box-sizing: border-box;
+}
+
+.progressOuter {
+  height: 10px;
+  background-color: #eee;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.progressInner {
+  height: 100%;
+  background-color: green;
+}
