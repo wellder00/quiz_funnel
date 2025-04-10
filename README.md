@@ -1,2 +1,2 @@
 # quiz_funnel
-quiz_funnel for Egor
+that quiz_funnel for Egor
