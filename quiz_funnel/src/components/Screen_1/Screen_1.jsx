@@ -19,12 +19,12 @@ const Screen_1 = () => {
     <div className={styles.container}>
       <div className={styles.imgContainer}>
         <img className={styles.img} src={imageSrc} alt="Variant" />
+        <form onSubmit={handleSubmit}>
+          <button className={styles.but} type="submit">
+            Пройти
+          </button>
+        </form>
       </div>
-      <form onSubmit={handleSubmit}>
-        <button className={styles.button} type="submit">
-          Пройти
-        </button>
-      </form>
     </div>
   )
 }
