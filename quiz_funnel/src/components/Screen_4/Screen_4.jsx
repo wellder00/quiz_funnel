@@ -1,41 +1,52 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import styles from "./Screen_4.module.scss"
+import slide1 from "/slide1.png"
+import mobileImg from "/mobileImg.png"
 
 const Screen_4 = () => {
   const navigate = useNavigate()
 
-  const [progress, setProgress] = useState(60)
+  const [progress, setProgress] = useState(50)
 
   const handleAnswer = () => {
     setProgress(100)
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    navigate("/screen6") 
-  }
+    const handleSubmit = (event) => {
+      event.preventDefault()
+      navigate("/screen6")
+    }
+
+  const isMobile = window.innerWidth <= 680
+  const imageSrc = isMobile ? mobileImg : slide1
 
   return (
     <div className={styles.container}>
-      <form onSubmit={handleSubmit} className={styles.formBox}>
+      <form className={styles.formBox}>
         <div className={styles.questionBox}>
-          <div className={styles.questionHeader}>Вопрос 3</div>
-          <div className={styles.questionBody}>
-            У вас есть ритуалы перед сном ребенка?
+          <div className={styles.imgContainer}>
+            <img className={styles.img} src={imageSrc} alt="Variant" />
+            {/* <div className={styles.questionBody}>
+              У вас есть ритуалы перед сном ребенка?
+            </div> */}
+            <div className={styles.buttonsRow}>
+              <button
+                className={styles.button}
+                type="button"
+                onClick={handleSubmit}
+              >
+                Да
+              </button>
+              <button
+                className={styles.button}
+                type="button"
+                onClick={handleSubmit}
+              >
+                Нет
+              </button>
+            </div>
           </div>
-        </div>
-
-        <div className={styles.buttonsContainer}>
-          <div className={styles.buttonsRow}>
-            <button type="submit" onClick={handleAnswer}>
-              Да
-            </button>
-            <button type="submit" onClick={handleAnswer}>
-              Нет
-            </button>
-          </div>
-       
         </div>
         <div className={styles.progressBar}>
           <div className={styles.progressText}>Прогресс по заполнению</div>
