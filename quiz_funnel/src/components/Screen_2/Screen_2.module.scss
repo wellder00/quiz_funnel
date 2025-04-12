@@ -6,49 +6,52 @@
   font-family: sans-serif;
   padding: 20px;
   max-width: 100%;
-  min-height: 100vh; 
+  min-height: 100vh;
   box-sizing: border-box;
   overflow-x: hidden;
 }
 
-.formBox {
-  border: 2px solid black;
+.imgContainer {
+  position: relative;
   width: 100%;
-  max-width: 300px; 
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+  height: 100%;
 }
-
-.questionBox {
-  border-bottom: 2px solid black;
-}
-
-.questionHeader {
-  border-bottom: 1px solid black;
-  padding: 10px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.questionBody {
-  padding: 20px;
-  min-height: 100px;
-  text-align: center;
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .buttonsRow {
   display: flex;
-  justify-content: space-around;  
-  border-top: 2px solid black;
-  padding: 10px;
-  flex-wrap: wrap; 
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
 }
 
 .buttonsRow button {
-  width: auto;
-  padding: 10px 20px;
-  font-size: 16px;
+  position: relative;
+  width: 300px;
+  background-color: #ff6b00;
+  color: white;
+  font-size: 1.2rem;
+  padding: 1.5rem 3rem;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    background-color: #e65c00;
+  }
 }
 
 .submitButton {
@@ -61,18 +64,71 @@
   border-top: 2px solid black;
   padding: 10px;
   width: 100%;
-  max-width: 300px; 
+  max-width: 350px;
   box-sizing: border-box;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .progressOuter {
   height: 10px;
   background-color: #eee;
   width: 100%;
-  border: 1px solid black;
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
 .progressInner {
   height: 100%;
-  background-color: green;
+  background-color: #ff6b00;
+  transition: width 0.3s ease;  
+}
+
+.progressText {
+ 
+  font-family: "Nunito", sans-serif; /* Шрифт */
+  font-size: 1.5rem; /* Размер текста */
+  font-weight: 700; /* Жирность */
+  color: #ff6b00; /* Цвет текста */
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0;
+  }
+
+  .imgContainer {
+    max-width: 100%;
+    height: 100%;
+  }
+
+  .img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .button {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    width: 100px;
+  }
+
+  .buttonsRow button {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    width: 200px;
+  }
+}
+
+@media (max-width: 500px) {
+  .buttonsRow button {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    width: 100px;
+  }
 }
