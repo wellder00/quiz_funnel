@@ -31,18 +31,16 @@ const Screen_5 = () => {
           </div>
           <div className={styles.appItem}>
             <img
-              src="./icon2.png"
+              src="./icon2.jpg"
               alt="Приложение 1"
               className={`${styles.appIcon} ${styles.blurred}`}
             />
-            <p className={styles.appName}>
-              DreamTale Library
-            </p>
+            <p className={styles.appName}>DreamTale Library</p>
             <div className={styles.stars}>★★★☆☆</div>
           </div>
           <div className={styles.appItem}>
             <img
-              src="./icon3.png"
+              src="./icon3.jpg"
               alt="Приложение 2"
               className={`${styles.appIcon} ${styles.blurred}`}
             />
