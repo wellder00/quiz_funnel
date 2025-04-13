@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import styles from "./Screen_4.module.scss"
-import slide1 from "/slide1.png"
-import mobileImg from "/mobileImg.png"
+import pc3 from "/pc3-1.png"
+import phone3 from "/phone3-1.png"
 
 const Screen_4 = () => {
   const navigate = useNavigate()
@@ -19,7 +19,7 @@ const Screen_4 = () => {
     }
 
   const isMobile = window.innerWidth <= 680
-  const imageSrc = isMobile ? mobileImg : slide1
+  const imageSrc = isMobile ? phone3 : pc3
 
   return (
     <div className={styles.container}>

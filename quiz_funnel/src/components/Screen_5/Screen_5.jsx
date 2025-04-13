@@ -1,57 +1,54 @@
 import React from "react"
 import styles from "./Screen_5.module.scss"
+import pc5 from "/pc5.png"
+import phone5 from "/phone5.png"
 
 const Screen_5 = () => {
+  const isMobile = window.innerWidth <= 726
+  const imageSrc = isMobile ? phone5 : pc5
+
   return (
     <div className={styles.container}>
-      <h1>Что поможет вашему ребенку лучше засыпать:</h1>
-      <p>
-        Четкие ритуалы перед сном, чтобы успокоить ребенка после активного дня
-      </p>
-      <p>Необходимо убрать внешние раздражители (яркий свет, громкие звуки)</p>
-      <p>Сказка на ночь</p>
-      <h2>
-        ТОП приложений, где собраны лучшие сказки на ночь для вашего ребенка:
-      </h2>
-
-      <div className={styles.appList}>
-        {/* Ваше приложение */}
-        <div className={styles.appItem}>
-          <a
-            href="https://yourapp.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+      <div className={styles.imgContainer}>
+        <img className={styles.img} src={imageSrc} alt="Variant" />
+        <div className={styles.appList}>
+          <div className={styles.appItem}>
+            <a
+              href="https://apps.apple.com/us/app/bedtime-books-stories/id6477703850"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className={styles.appIcon}>
+                <img
+                  className={styles.appIcon}
+                  src="./icon.webp"
+                  alt="Fairy tales"
+                />
+              </div>
+            </a>
+            <p className={styles.appName}>Bedtime Books－Stories</p>
+            <div className={styles.stars}>★★★★★</div>
+          </div>
+          <div className={styles.appItem}>
             <img
-              src="./icon1.png"
-              alt="Fairy tales"
-              className={styles.appIcon}
+              src="./icon2.png"
+              alt="Приложение 1"
+              className={`${styles.appIcon} ${styles.blurred}`}
             />
-          </a>
-          <p>Fairy tales</p>
-          <div className={styles.stars}>★★★★★</div>
-        </div>
-
-        {/* Другое приложение 1 */}
-        <div className={styles.appItem}>
-          <img
-            src="./icon2.png"
-            alt="Приложение 1"
-            className={`${styles.appIcon} ${styles.blurred}`}
-          />
-          <p>Приложение 1</p>
-          <div className={styles.stars}>★★★☆☆</div>
-        </div>
-
-        {/* Другое приложение 2 */}
-        <div className={styles.appItem}>
-          <img
-            src="./icon3.png"
-            alt="Приложение 2"
-            className={`${styles.appIcon} ${styles.blurred}`}
-          />
-          <p>Приложение 2</p>
-          <div className={styles.stars}>★★☆☆☆</div>
+            <p className={styles.appName}>
+              DreamTale Library
+            </p>
+            <div className={styles.stars}>★★★☆☆</div>
+          </div>
+          <div className={styles.appItem}>
+            <img
+              src="./icon3.png"
+              alt="Приложение 2"
+              className={`${styles.appIcon} ${styles.blurred}`}
+            />
+            <p className={styles.appName}>Moonlight Reads</p>
+            <div className={styles.stars}>★★☆☆☆</div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import styles from "./Screen_2.module.scss"
-import slide1 from "/slide1.png"
-import mobileImg from "/mobileImg.png"
+import pc2 from "/pc2.png"
+import phone2 from "/phone2.png"
 
 const Screen_2 = () => {
   const navigate = useNavigate()
@@ -15,17 +15,14 @@ const Screen_2 = () => {
   }
 
   const isMobile = window.innerWidth <= 680
-  const imageSrc = isMobile ? mobileImg : slide1
+  const imageSrc = isMobile ? phone2 : pc2
 
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmit} className={styles.formBox}>
         <div className={styles.questionBox}>
           <div className={styles.imgContainer}>
-            <img className={styles.img} src={imageSrc} alt="Variant" />
-            {/* <div className={styles.questionBody}>
-              Плачет ли ваш ребенок перед тем, как вы его укладываете спать?
-            </div> */}
+            <img className={styles.img} src={imageSrc} alt="Variant" />        
             <div className={styles.buttonsRow}>
               <button className={styles.button} type="button" onClick={handleSubmit}>
                 Да

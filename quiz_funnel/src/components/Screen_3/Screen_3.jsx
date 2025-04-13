@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import styles from "./Screen_3.module.scss"
-import slide1 from "/slide1.png"
-import mobileImg from "/mobileImg.png"
+import phone3 from "/phone3.png"
+import pc3 from "/pc3.png"
 const Screen_3 = () => {
   const navigate = useNavigate()
 
@@ -15,33 +15,16 @@ const Screen_3 = () => {
   }
 
   const isMobile = window.innerWidth <= 680
-  const imageSrc = isMobile ? mobileImg : slide1
+  const imageSrc = isMobile ? phone3 : pc3
 
   return (
     <div className={styles.container}>
       <form className={styles.formBox}>
-        <div className={styles.questionBox}>
-          <div className={styles.imgContainer}>
-            <img className={styles.img} src={imageSrc} alt="Variant" />
-            {/* <div className={styles.questionBody}>
-                        Плачет ли ваш ребенок перед тем, как вы его укладываете спать?
-                      </div> */}
-            <div className={styles.buttonsRow}>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={handleNext}
-              >
-                Далее
-              </button>
-            </div>
-          </div>
-          <div className={styles.questionBox}> 
-            <div className={styles.questionBody}>
-              Во сколько времени вы его укладываете спать?
-            </div>
-            <input 
-            className={styles.input}
+        <div className={styles.imgContainer}>
+          <img className={styles.img} src={imageSrc} alt="Variant" />
+          <div className={styles.questionBox}>
+            <input
+              className={styles.input}
               type="range"
               min="0"
               max="23"
@@ -50,6 +33,9 @@ const Screen_3 = () => {
             />
             <span>{`${time}:00`}</span>
           </div>
+          <button className={styles.button} type="button" onClick={handleNext}>
+            Далее
+          </button>
         </div>
 
         <div className={styles.progressBar}>

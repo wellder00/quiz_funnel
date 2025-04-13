@@ -12,34 +12,36 @@
   text-align: center;
 }
 
-h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #ff6b00;
-  margin-bottom: 20px;
-}
-
 p {
   font-size: 1.2rem;
-  color: #333;
-  margin-bottom: 10px;
   color: #ff6b00;
 }
 
-h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #ff6b00;
-  margin-top: 20px;
-  margin-bottom: 20px;
+.imgContainer {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .appList {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
-  flex-direction: column;
   gap: 20px;
-  width: 250px;
-  max-width: 400px;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  align-items: stretch;
 }
 
 .appItem {
@@ -47,29 +49,25 @@ h2 {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  background-color: #8a8888; /* Светлый фон для контраста */
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Мягкая тень */
+  background-color: #bfb7b7;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  width: 150px;
 
   &:hover {
-    transform: translateY(-5px); /* Легкий подъем при наведении */
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* Увеличенная тень */
-    background-color: #ffffff; /* Чуть более яркий фон при наведении */
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
   }
 }
 
 .appIcon {
-  width: 80px;
-  height: 80px;
-  border-radius: 12px;
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
   transition: transform 0.3s ease;
-}
-
-.appIcon:hover {
-  transform: scale(1.1);
 }
 
 .blurred {
@@ -101,26 +99,49 @@ h2 {
   }
 }
 
-@media (max-width: 768px) {
-  h1 {
-    font-size: 1.8rem;
+@media (max-width: 1050px) {
+  .appItem {
+    width: 140px;
+  }
+
+  .appName {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+@media (max-width: 914px) {
+  .appList {
+    bottom: 3%;
+  }
+
+  .appItem {
+    width: 100px;
   }
 
   p {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
+}
 
-  h2 {
-    font-size: 1.3rem;
+@media (max-width: 600px) {
+  .appItem {
+    width: 80px;
+    gap: 2px;
+    padding: 5px;
   }
 
   .appIcon {
-    width: 60px;
-    height: 60px;
+    margin-bottom: 2px;
   }
 
-  .recommendationButton {
-    font-size: 1rem;
-    padding: 0.75rem 1.5rem;
+  .stars {
+    margin-top: 2px;
+    font-size: 0.8rem;
+  }
+
+  p {
+    font-size: 0.6rem;
+    margin: 0;
   }
 }
