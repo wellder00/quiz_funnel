@@ -6,10 +6,12 @@ import phone2 from "/phone2.png"
 
 const Screen_2 = () => {
   const navigate = useNavigate()
+  const [isImageLoaded, setIsImageLoaded] = useState(false)
 
   const [progress, setProgress] = useState(0)
 
   const handleSubmit = (event) => {
+    setIsImageLoaded(false)
     event.preventDefault()
     navigate("/screen3")
   }
@@ -18,22 +20,41 @@ const Screen_2 = () => {
   const imageSrc = isMobile ? phone2 : pc2
 
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      style={{ display: isImageLoaded ? "block" : "none" }}
+    >
       <form onSubmit={handleSubmit} className={styles.formBox}>
         <div className={styles.questionBox}>
           <div className={styles.imgContainer}>
-            <img className={styles.img} src={imageSrc} alt="Variant" />        
+            <img
+              className={styles.img}
+              src={imageSrc}
+              alt="Variant"
+              onLoad={() => setIsImageLoaded(true)}
+            />
             <div className={styles.buttonsRow}>
-              <button className={styles.button} type="button" onClick={handleSubmit}>
+              <button
+                className={styles.button}
+                type="button"
+                onClick={handleSubmit}
+              >
                 Да
               </button>
-              <button className={styles.button} type="button" onClick={handleSubmit}>
+              <button
+                className={styles.button}
+                type="button"
+                onClick={handleSubmit}
+              >
                 Нет
               </button>
             </div>
           </div>
         </div>
-        <div className={styles.progressBar}>
+        <div
+          className={styles.progressBar}
+          
+        >
           <div className={styles.progressText}>Прогресс по заполнению</div>
           <div className={styles.progressOuter}>
             <div

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import styles from "./Screen_1.module.scss"
 import slide1 from "/slide1.png"
@@ -6,8 +6,10 @@ import mobileImg from "/mobileImg.png"
 
 const Screen_1 = () => {
   const navigate = useNavigate()
+  const [isImageLoaded, setIsImageLoaded] = useState(false)
 
   const handleSubmit = (event) => {
+    setIsImageLoaded(false)
     event.preventDefault()
     navigate("/screen2")
   }
@@ -17,8 +19,16 @@ const Screen_1 = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.imgContainer}>
-        <img className={styles.img} src={imageSrc} alt="Variant" />
+      <div
+        className={styles.imgContainer}
+        style={{ display: isImageLoaded ? "block" : "none" }}
+      >
+        <img
+          className={styles.img}
+          src={imageSrc}
+          alt="Variant"
+          onLoad={() => setIsImageLoaded(true)}
+        />
         <form onSubmit={handleSubmit}>
           <button className={styles.button} type="submit">
             Пройти

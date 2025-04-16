@@ -1,41 +1,46 @@
-import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import styles from "./Screen_6.module.scss"
-import pc4 from "/pc4.png"
-import phone4 from "/phone4.png"
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import styles from "./Screen_6.module.scss";
+import pc4 from "/pc4.png";
+import phone4 from "/phone4.png";
 
 const Screen_6 = () => {
-  const navigate = useNavigate()
-
-  const [progress, setProgress] = useState(80)
-  const [isLoading, setIsLoading] = useState(false)
+  const navigate = useNavigate();
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [progress, setProgress] = useState(80);
+  const [isLoading, setIsLoading] = useState(false); 
 
   const handleAnswer = () => {
-    setProgress(100)
-  }
+    setProgress(100);
+  };
 
   const handleSubmit = (event) => {
-    event.preventDefault()
-    setIsLoading(true)
+    event.preventDefault();
+    setIsLoading(true); 
     setTimeout(() => {
-      setIsLoading(false)
-      navigate("/screen5")
-    }, 1000)
-  }
+      navigate("/screen5");
+    }, 1000); 
+  };
 
-  const isMobile = window.innerWidth <= 680
-  const imageSrc = isMobile ? phone4 : pc4
+  const isMobile = window.innerWidth <= 680;
+  const imageSrc = isMobile ? phone4 : pc4;
 
   return (
     <div className={styles.container}>
       {isLoading ? (
-        <div className={styles.loader}></div>
+        <div className={styles.loader}></div> 
       ) : (
         <form onSubmit={handleSubmit} className={styles.formBox}>
           <div className={styles.questionBox}>
             <div className={styles.imgContainer}>
-              <img className={styles.img} src={imageSrc} alt="Variant" />
-              
+              <img
+                className={styles.img}
+                src={imageSrc}
+                onLoad={() => setIsImageLoaded(true)}
+                alt="Variant"
+                style={{ display: isImageLoaded ? "block" : "none" }} 
+              />
+              {!isImageLoaded && <div className={styles.loader}></div>} 
               <div className={styles.buttonsRow}>
                 <button
                   className={styles.button}
@@ -80,7 +85,7 @@ const Screen_6 = () => {
         </form>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Screen_6
+export default Screen_6;

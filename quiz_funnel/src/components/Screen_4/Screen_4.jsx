@@ -6,6 +6,7 @@ import phone3 from "/phone3-1.png"
 
 const Screen_4 = () => {
   const navigate = useNavigate()
+  const [isImageLoaded, setIsImageLoaded] = useState(false)
 
   const [progress, setProgress] = useState(50)
 
@@ -13,23 +14,30 @@ const Screen_4 = () => {
     setProgress(100)
   }
 
-    const handleSubmit = (event) => {
-      event.preventDefault()
-      navigate("/screen6")
-    }
+  const handleSubmit = (event) => {
+    setIsImageLoaded(false)
+    event.preventDefault()
+    navigate("/screen6")
+  }
 
   const isMobile = window.innerWidth <= 680
   const imageSrc = isMobile ? phone3 : pc3
 
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      style={{ display: isImageLoaded ? "block" : "none" }}
+    >
       <form className={styles.formBox}>
         <div className={styles.questionBox}>
           <div className={styles.imgContainer}>
-            <img className={styles.img} src={imageSrc} alt="Variant" />
-            {/* <div className={styles.questionBody}>
-              У вас есть ритуалы перед сном ребенка?
-            </div> */}
+            <img
+              className={styles.img}
+              src={imageSrc}
+              onLoad={() => setIsImageLoaded(true)}
+              alt="Variant"
+            />
+
             <div className={styles.buttonsRow}>
               <button
                 className={styles.button}
@@ -48,7 +56,9 @@ const Screen_4 = () => {
             </div>
           </div>
         </div>
-        <div className={styles.progressBar}>
+        <div
+          className={styles.progressBar}
+        >
           <div className={styles.progressText}>Прогресс по заполнению</div>
           <div className={styles.progressOuter}>
             <div

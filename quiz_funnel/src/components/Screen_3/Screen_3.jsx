@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom"
 import styles from "./Screen_3.module.scss"
 import phone3 from "/phone3.png"
 import pc3 from "/pc3.png"
+
 const Screen_3 = () => {
   const navigate = useNavigate()
-
+  const [isImageLoaded, setIsImageLoaded] = useState(false)
   const [progress, setProgress] = useState(33)
   const [time, setTime] = useState(20)
 
@@ -18,10 +19,18 @@ const Screen_3 = () => {
   const imageSrc = isMobile ? phone3 : pc3
 
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      style={{ display: isImageLoaded ? "block" : "none" }}
+    >
       <form className={styles.formBox}>
         <div className={styles.imgContainer}>
-          <img className={styles.img} src={imageSrc} alt="Variant" />
+          <img
+            className={styles.img}
+            src={imageSrc}
+            onLoad={() => setIsImageLoaded(true)}
+            alt="Variant"
+          />
           <div className={styles.questionBox}>
             <input
               className={styles.input}

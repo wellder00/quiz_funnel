@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import styles from "./Screen_5.module.scss"
 import pc5 from "/pc5.png"
 import phone5 from "/phone5.png"
@@ -6,11 +6,20 @@ import phone5 from "/phone5.png"
 const Screen_5 = () => {
   const isMobile = window.innerWidth <= 726
   const imageSrc = isMobile ? phone5 : pc5
+  const [isImageLoaded, setIsImageLoaded] = useState(false)
 
   return (
     <div className={styles.container}>
-      <div className={styles.imgContainer}>
-        <img className={styles.img} src={imageSrc} alt="Variant" />
+      <div
+        className={styles.imgContainer}
+        style={{ display: isImageLoaded ? "block" : "none" }}
+      >
+        <img
+          className={styles.img}
+          src={imageSrc}
+          onLoad={() => setIsImageLoaded(true)}
+          alt="Variant"
+        />
         <div className={styles.appList}>
           <div className={styles.appItem}>
             <a
@@ -18,13 +27,11 @@ const Screen_5 = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div className={styles.appIcon}>
-                <img
-                  className={styles.appIcon}
-                  src="./icon.webp"
-                  alt="Fairy tales"
-                />
-              </div>
+              <img
+                className={styles.appIcon}
+                src="./icon.webp"
+                alt="Fairy tales"
+              />
             </a>
             <p className={styles.appName}>Bedtime Books－Stories</p>
             <div className={styles.stars}>★★★★★</div>
