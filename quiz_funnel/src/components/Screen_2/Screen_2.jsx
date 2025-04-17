@@ -8,7 +8,7 @@ const Screen_2 = () => {
   const navigate = useNavigate()
   const [isImageLoaded, setIsImageLoaded] = useState(false)
 
-  const [progress, setProgress] = useState(0)
+  const [progress, setProgress] = useState(10)
 
   const handleSubmit = (event) => {
     setIsImageLoaded(false)
@@ -22,48 +22,43 @@ const Screen_2 = () => {
   return (
     <div
       className={styles.container}
-      style={{ display: isImageLoaded ? "block" : "none" }}
+      style={{ display: isImageLoaded ? "flex" : "none" }}
     >
-      <form onSubmit={handleSubmit} className={styles.formBox}>
-        <div className={styles.questionBox}>
-          <div className={styles.imgContainer}>
-            <img
-              className={styles.img}
-              src={imageSrc}
-              alt="Variant"
-              onLoad={() => setIsImageLoaded(true)}
-            />
-            <div className={styles.buttonsRow}>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={handleSubmit}
-              >
-                Да
-              </button>
-              <button
-                className={styles.button}
-                type="button"
-                onClick={handleSubmit}
-              >
-                Нет
-              </button>
-            </div>
-          </div>
+      <div className={styles.imgContainer}>
+        <img
+          className={styles.img}
+          src={imageSrc}
+          alt="Variant"
+          onLoad={() => setIsImageLoaded(true)}
+        />
+        <div className={styles.buttonsRow}>
+          <button
+            className={styles.button}
+            type="button"
+            onClick={handleSubmit}
+          >
+            Да
+          </button>
+          <button
+            className={styles.button}
+            type="button"
+            onClick={handleSubmit}
+          >
+            Нет
+          </button>
         </div>
-        <div
-          className={styles.progressBar}
-          
-        >
+        <div className={styles.progressBar}>
           <div className={styles.progressText}>Прогресс по заполнению</div>
           <div className={styles.progressOuter}>
             <div
               className={styles.progressInner}
               style={{ width: `${progress}%` }}
-            ></div>
+            >
+              {progress}%
+            </div>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   )
 }

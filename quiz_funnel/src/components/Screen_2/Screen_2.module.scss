@@ -1,14 +1,13 @@
 .container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-family: sans-serif;
-  padding: 20px;
+  align-items: center;
+  flex-direction: column;
+  padding: 0;
   max-width: 100%;
   min-height: 100vh;
   box-sizing: border-box;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .imgContainer {
@@ -16,6 +15,7 @@
   width: 100%;
   height: 100%;
 }
+
 .img {
   width: 100%;
   height: 100%;
@@ -29,7 +29,7 @@
   gap: 50px;
   flex-wrap: wrap;
   position: absolute;
-  bottom: 2%;
+  bottom: 15%;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
@@ -38,19 +38,21 @@
 .buttonsRow button {
   position: relative;
   width: 300px;
-  background-color: #ff6b00;
+  background-color: #ff4500;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   padding: 1.5rem 3rem;
   border: none;
-  border-radius: 16px;
+  border-radius: 20px;
   cursor: pointer;
   font-weight: bold;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 
   &:hover {
-    background-color: #e65c00;
+    background-color: #e63900;
+    transform: scale(1.05);
   }
 }
 
@@ -61,41 +63,53 @@
 }
 
 .progressBar {
-  border-top: 2px solid black;
+  position: absolute;
+  bottom: 1%; /* Размещаем прогресс на картинке */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%; /* Увеличиваем ширину полоски */
+  max-width: 500px; /* Ограничиваем максимальную ширину */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.15
+  ); /* Полупрозрачный фон для читабельности */
   padding: 10px;
-  width: 100%;
-  max-width: 350px;
-  box-sizing: border-box;
-  margin: 0 auto;
+  border-radius: 16px;
   text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .progressOuter {
-  height: 10px;
+  height: 20px; /* Увеличиваем высоту полоски */
   background-color: #eee;
   width: 100%;
-  border: none;
   border-radius: 16px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  position: relative;
 }
 
 .progressInner {
   height: 100%;
   background-color: #ff6b00;
-  transition: width 0.3s ease;  
+  transition: width 0.3s ease;
+  text-align: right;
+  padding-right: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
 }
 
-.progressText { 
-  font-family: "Nunito", sans-serif; /* Шрифт */
-  font-size: 1.5rem; /* Размер текста */
-  font-weight: 700; /* Жирность */
-  color: #ff6b00; /* Цвет текста */
-  text-align: center;
-  margin-bottom: 10px;
+.progressText {
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 5px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 970px) {
   .container {
     padding: 0;
   }
@@ -122,12 +136,129 @@
     padding: 0.75rem 1.5rem;
     width: 200px;
   }
+
+  .progressBar {
+    width: 90%; /* Увеличиваем ширину на меньших экранах */
+    padding: 8px; /* Уменьшаем внутренние отступы */
+  }
+
+  .progressOuter {
+    height: 20px; /* Уменьшаем высоту полоски */
+  }
+
+  .progressInner {
+    font-size: 0.8rem; /* Уменьшаем размер текста */
+  }
+
+  .progressText {
+    font-size: 0.9rem; /* Уменьшаем размер текста заголовка */
+  }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 800px) {
   .buttonsRow button {
     font-size: 1rem;
     padding: 0.75rem 1.5rem;
-    width: 100px;
+    width: 140px;
+  }
+
+  .progressBar {
+    width: 65%; /* Почти полная ширина экрана */
+    padding: 4px; /* Ещё меньше внутренние отступы */
+  }
+
+  .progressOuter {
+    height: 10px; /* Ещё меньше высота полоски */
+  }
+
+  .progressInner {
+    font-size: 0.5rem; /* Ещё меньше размер текста */
+  }
+
+  .progressText {
+    font-size: 0.6rem; /* Ещё меньше размер текста заголовка */
+  }
+}
+
+@media (max-width: 680px) {
+  .container {
+    padding: 0;
+    overflow: hidden; /* Убираем скроллы */
+  }
+
+  .imgContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Растягиваем контейнер на весь экран */
+  }
+
+  .img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Подстраиваем изображение под размер экрана */
+  }
+
+  .buttonsRow {
+    bottom: 15%; /* Поднимаем кнопки выше */
+  }
+
+  .progressBar {
+    width: 90%; /* Увеличиваем ширину прогресс-бара */
+    padding: 8px;
+    bottom: 1%; /* Размещаем прогресс на картинке */
+  }
+
+  .progressOuter {
+    height: 20px; /* Уменьшаем высоту полоски */
+  }
+
+  .progressInner {
+    font-size: 0.8rem; /* Уменьшаем размер текста */
+  }
+
+  .progressText {
+    font-size: 0.9rem; /* Уменьшаем размер текста заголовка */
+  }
+}
+
+@media (max-width: 630px) {
+  .buttonsRow {
+    bottom: 15%;
+  }
+
+  .progressBar {
+    bottom: 6%;
+  }
+}
+
+@media (max-width: 562px) {
+  .buttonsRow {
+    bottom: 22%;
+  }
+
+  .progressBar {
+    bottom: 12%;
+  }
+}
+
+@media (max-width: 476px) {
+  .buttonsRow {
+    bottom: 27%;
+  }
+
+  .progressBar {
+    bottom: 17%;
+  }
+}
+
+@media (max-width: 420px) {
+  .buttonsRow {
+    bottom: 30%;
+  }
+
+  .progressBar {
+    bottom: 20%;
   }
 }
