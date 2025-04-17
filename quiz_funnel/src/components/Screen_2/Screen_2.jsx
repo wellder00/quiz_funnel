@@ -7,12 +7,11 @@ import phone2 from "/phone2.png"
 const Screen_2 = () => {
   const navigate = useNavigate()
   const [isImageLoaded, setIsImageLoaded] = useState(false)
-
   const [progress, setProgress] = useState(10)
 
   const handleSubmit = (event) => {
-    setIsImageLoaded(false)
     event.preventDefault()
+    setIsImageLoaded(false)
     navigate("/screen3")
   }
 
@@ -47,20 +46,21 @@ const Screen_2 = () => {
             Нет
           </button>
         </div>
-        <div className={styles.progressBar}>
-          <div className={styles.progressText}>Прогресс по заполнению</div>
-          <div className={styles.progressOuter}>
-            <div
-              className={styles.progressInner}
-              style={{ width: `${progress}%` }}
-            >
-              {progress}%
-            </div>
-          </div>
-        </div>
+        <ProgressBar progress={progress} />
       </div>
     </div>
   )
 }
+
+const ProgressBar = ({ progress }) => (
+  <div className={styles.progressBar}>
+    <div className={styles.progressText}>Прогресс по заполнению</div>
+    <div className={styles.progressOuter}>
+      <div className={styles.progressInner} style={{ width: `${progress}%` }}>
+        {progress}%
+      </div>
+    </div>
+  </div>
+)
 
 export default Screen_2
