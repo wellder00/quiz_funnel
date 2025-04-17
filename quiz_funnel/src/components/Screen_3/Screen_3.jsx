@@ -8,7 +8,7 @@ const Screen_3 = () => {
   const navigate = useNavigate()
   const [isImageLoaded, setIsImageLoaded] = useState(false)
   const [progress, setProgress] = useState(33)
-  const [time, setTime] = useState(20)
+  const [time, setTime] = useState(85) // Начальное значение времени
 
   const handleNext = () => {
     setProgress(66)
@@ -19,46 +19,50 @@ const Screen_3 = () => {
   const imageSrc = isMobile ? phone3 : pc3
 
   return (
-    <div
-      className={styles.container}
-      style={{ display: isImageLoaded ? "block" : "none" }}
-    >
-      <form className={styles.formBox}>
-        <div className={styles.imgContainer}>
-          <img
-            className={styles.img}
-            src={imageSrc}
-            onLoad={() => setIsImageLoaded(true)}
-            alt="Variant"
+    <div className={styles.container}>
+      <div
+        className={styles.imgContainer}
+        style={{ display: isImageLoaded ? "flex" : "none" }}
+      >
+        <img
+          className={styles.img}
+          src={imageSrc}
+          onLoad={() => setIsImageLoaded(true)}
+          alt="Variant"
+        />
+        <div className={styles.questionBox}>
+          <input
+            className={styles.input}
+            type="range"
+            min="0"
+            max="96" // 96 интервалов по 15 минут (24 часа * 4 интервала в час)
+            step="1" // Шаг равен 1 интервалу (15 минут)
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
           />
-          <div className={styles.questionBox}>
-            <input
-              className={styles.input}
-              type="range"
-              min="0"
-              max="23"
-              value={time}
-              onChange={(e) => setTime(e.target.value)}
-            />
-            <span>{`${time}:00`}</span>
-          </div>
-          <button className={styles.button} type="button" onClick={handleNext}>
-            Далее
-          </button>
+          <span>{`${Math.floor(time / 4)}:${
+            (time % 4) * 15 === 0 ? "00" : (time % 4) * 15
+          }`}</span>
+          {/* Преобразуем значение в часы и минуты */}
         </div>
-
-        <div className={styles.progressBar}>
-          <div className={styles.progressText}>Прогресс по заполнению</div>
-          <div className={styles.progressOuter}>
-            <div
-              className={styles.progressInner}
-              style={{ width: `${progress}%` }}
-            ></div>
-          </div>
-        </div>
-      </form>
+        <button className={styles.button} type="button" onClick={handleNext}>
+          Далее
+        </button>
+        <ProgressBar progress={progress} />
+      </div>
     </div>
   )
 }
+
+const ProgressBar = ({ progress }) => (
+  <div className={styles.progressBar}>
+    <div className={styles.progressText}>Прогресс по заполнению</div>
+    <div className={styles.progressOuter}>
+      <div className={styles.progressInner} style={{ width: `${progress}%` }}>
+        {progress}%
+      </div>
+    </div>
+  </div>
+)
 
 export default Screen_3

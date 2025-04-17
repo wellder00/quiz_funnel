@@ -1,7 +1,6 @@
 .container {
   display: flex;
   justify-content: center;
-
   align-items: center;
   flex-direction: column;
   padding: 0;
@@ -11,33 +10,23 @@
   overflow: hidden;
 }
 
-.formBox {
-  border: 2px solid black;
-  width: 100%;
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
 .questionBox {
   position: absolute;
-  bottom: 20%;
+  bottom: 36%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #b9a79b;
-  padding: 20px;
-  padding-bottom: 10px;
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 10px;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   text-align: center;
-  width: 250px;
+  width: 80%;
+  max-width: 500px;
 }
 
 .input {
   -webkit-appearance: none;
   width: 100%;
-  max-width: 300px;
   height: 10px;
   background-color: transparent;
   border-radius: 5px;
@@ -90,91 +79,90 @@
 .imgContainer {
   position: relative;
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 .img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.submitButton {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-}
-
 .progressBar {
-  border-top: 2px solid black;
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 500px;
+  background-color: rgba(255, 255, 255, 0.15);
   padding: 10px;
-  width: 100%;
-  max-width: 350px;
-  box-sizing: border-box;
-  margin: 0 auto;
+  border-radius: 16px;
   text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .progressOuter {
-  height: 10px;
+  height: 20px;
   background-color: #eee;
   width: 100%;
-  border: none;
   border-radius: 16px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
   overflow: hidden;
+  position: relative;
 }
 
 .progressInner {
   height: 100%;
   background-color: #ff6b00;
   transition: width 0.3s ease;
+  text-align: right;
+  padding-right: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
 }
 
 .progressText {
   font-family: "Nunito", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 700;
-  color: #ff6b00;
-  text-align: center;
-  margin-bottom: 10px;
+  color: #ffffff;
+  margin-bottom: 5px;
 }
 
 .button {
   position: absolute;
-  bottom: 10px;
+  width: 300px;
+  bottom: 23%;
   left: 50%;
   transform: translateX(-50%);
-  width: 300px;
-  background-color: #ff6b00;
+  background-color: #ff4500;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   padding: 1.5rem 3rem;
   border: none;
-  border-radius: 16px;
+  border-radius: 20px;
   cursor: pointer;
   font-weight: bold;
-  text-align: center;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 
   &:hover {
-    background-color: #e65c00;
+    background-color: #e63900;
+    transform: translateX(-50%) scale(1.05);
   }
 }
 
-
-
 span {
   font-family: "Nunito", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 700;
-  color: #d98a6f;
+  color: #ffffff;
   text-align: center;
   display: block;
   margin-top: 10px;
-  animation: blink 3s infinite;
 }
 
 @keyframes blink {
@@ -187,25 +175,92 @@ span {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1020px) {
+  .button {
+    font-size: 0.8rem;
+    padding: 0.3rem 1.0rem;
+    width: 200px;
+    bottom: 21%;
+  }
+
+  .progressBar {
+    width: 50%;
+    padding: 8px;
+    bottom: 5%;
+  }
+
+  .questionBox {
+    bottom: 28%;
+  }
+
+  .progressInner {
+    font-size: 0.8rem;
+  }
+
+  .progressText {
+    font-size: 0.9rem;
+  }
+
+  .questionBox {
+    width: 50%;
+  }
+}
+
+@media (max-width: 680px) {
   .container {
     padding: 0;
+    overflow: hidden;
   }
 
   .imgContainer {
-    max-width: 100%;
-    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 
   .img {
     width: 100%;
-    height: auto;
-    object-fit: cover;
+    height: 100%;
+    object-fit: contain;
   }
 
   .button {
     font-size: 1rem;
     padding: 0.75rem 1.5rem;
     width: 200px;
+    bottom: 30%;
+  }
+
+   .questionBox {
+    bottom: 40%;
+  }
+
+  .progressBar {
+    width: 90%;
+    padding: 8px;
+    bottom: 15%;
+  }
+
+  .progressOuter {
+    height: 20px;
+  }
+
+  .progressInner {
+    font-size: 0.8rem;
+  }
+
+  .progressText {
+    font-size: 0.9rem;
+  }
+
+  .questionBox {
+    width: 90%;
+    padding: 8px;
+  }
+
+  span {
+    font-size: 0.9rem;
   }
 }
