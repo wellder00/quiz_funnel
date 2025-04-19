@@ -23,31 +23,6 @@
   display: block;
 }
 
-.formBox {
-  border: 2px solid black;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
-
-.questionBox {
-  border-bottom: 2px solid black;
-}
-
-.questionHeader {
-  border-bottom: 1px solid black;
-  padding: 10px;
-  text-align: center;
-  font-weight: bold;
-}
-
-.questionBody {
-  padding: 20px;
-  min-height: 100px;
-  text-align: center;
-}
-
 .buttonsRow {
   display: flex;
   justify-content: center;
@@ -62,11 +37,11 @@
 
 .button {
   position: relative;
-  width: 300px;
+  width: 160px;
   background-color: #ff4500;
   color: white;
-  font-size: 1.4rem;
-  padding: 1.5rem 3rem;
+  font-size: 1rem;
+  padding: 1rem 1.5rem;
   border: none;
   border-radius: 20px;
   cursor: pointer;
@@ -81,12 +56,6 @@
   }
 }
 
-.submitButton {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-}
-
 .progressBar {
   position: absolute;
   bottom: 1%;
@@ -99,6 +68,8 @@
   border-radius: 16px;
   text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-family: "Nunito", sans-serif;
+  z-index: 2;
 }
 
 .progressOuter {
@@ -119,6 +90,9 @@
   color: white;
   font-weight: bold;
   font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .progressText {
@@ -133,23 +107,24 @@
   .buttonsRow {
     bottom: 20%;
   }
-
   .progressBar {
     width: 90%;
     padding: 8px;
     bottom: 1%;
   }
-
   .progressOuter {
     height: 20px;
   }
-
   .progressInner {
     font-size: 0.8rem;
   }
-
   .progressText {
     font-size: 0.9rem;
+  }
+  .button {
+    width: 150px;
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
   }
 }
 
@@ -157,67 +132,76 @@
   .container {
     padding: 0;
     overflow: hidden;
+    min-height: 100vh;
+    height: 100vh;
+    width: 100vw;
   }
 
   .imgContainer {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+    z-index: 1;
   }
 
   .img {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     object-fit: contain;
+    display: block;
   }
 
   .buttonsRow {
-    bottom: 20%;    
+    bottom: 21%;
   }
 
-  .buttonsRow button {
+  .button {
+    width: 130px;
     font-size: 1rem;
-    padding: 1rem 1.5rem;
-    width: 150px;
+    padding: 0.7rem 1.1rem;
   }
 
   .progressBar {
     width: 90%;
     padding: 8px;
-    bottom: 8%;
-  }
-
-  .progressOuter {
-    height: 20px;
-  }
-
-  .progressInner {
-    font-size: 0.8rem;
-  }
-
-  .progressText {
-    font-size: 0.9rem;
+    bottom: 10%;
   }
 }
-
 
 @media (max-width: 480px) {
-
- .buttonsRow {
-    bottom: 23%;    
+  .buttonsRow {
+    bottom: 25%;
   }
-
-   .buttonsRow button {
+  .button {
+    width: 130px;
     font-size: 1rem;
     padding: 0.7rem 1.1rem;
-    width: 130px;
   }
-
-.progressBar {
+  .progressBar {
     width: 90%;
     padding: 8px;
-    bottom: 15%;
+    bottom: 17%;
   }
 }
+
+@media (max-width: 375px) {
+  .buttonsRow {
+    bottom: 23%;
+  }
+  .button {
+    width: 130px;
+    font-size: 1rem;
+    padding: 0.7rem 1.1rem;
+  }
+  .progressBar {
+    width: 90%;
+    padding: 8px;
+    bottom: 11%;
+  }
+}
+

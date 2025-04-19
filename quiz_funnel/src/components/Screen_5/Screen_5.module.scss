@@ -99,7 +99,7 @@ p {
   }
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1110px) {
   .appItem {
     width: 140px;
   }
@@ -112,7 +112,7 @@ p {
 
 @media (max-width: 914px) {
   .appList {
-    bottom: 3%;
+    bottom: 2%;
   }
 
   .appItem {
@@ -124,7 +124,7 @@ p {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 630px) {
   .appItem {
     width: 80px;
     gap: 2px;

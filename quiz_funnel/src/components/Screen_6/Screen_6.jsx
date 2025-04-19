@@ -22,7 +22,10 @@ const Screen_6 = () => {
   const imageSrc = isMobile ? phone4 : pc4
 
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      style={{ display: isImageLoaded ? "flex" : "none" }}
+    >
       {isLoading ? (
         <div className={styles.loader}></div>
       ) : (
@@ -34,7 +37,6 @@ const Screen_6 = () => {
                 src={imageSrc}
                 onLoad={() => setIsImageLoaded(true)}
                 alt="Variant"
-                style={{ display: isImageLoaded ? "block" : "none" }}
               />
               {!isImageLoaded && <div className={styles.loader}></div>}
               <button

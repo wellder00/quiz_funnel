@@ -110,7 +110,7 @@
 .progressBar {
   position: absolute;
   left: 50%;
-  bottom: 1%;
+  bottom: 25%;
   transform: translateX(-50%);
   width: 80%;
   max-width: 500px;
@@ -193,9 +193,8 @@
 
 @media (max-width: 930px) {
   .progressBar {
-    width: 90%;
+    width: 40%;
     padding: 8px;
-    bottom: 1%;
   }
   .progressOuter {
     height: 20px;
@@ -262,3 +261,5 @@
     bottom: 15%;
   }
 }
+
+

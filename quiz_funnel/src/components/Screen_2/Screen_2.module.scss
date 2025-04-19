@@ -242,12 +242,22 @@
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 430px) {
   .buttonsRow {
-    bottom: 30%;
+    bottom: 32%;
   }
 
   .progressBar {
-    bottom: 20%;
+    bottom: 22%;
+  }
+}
+
+@media (max-width: 375px) {
+  .buttonsRow {
+    bottom: 27%;
+  }
+
+  .progressBar {
+    bottom: 15%;
   }
 }

@@ -68,7 +68,7 @@
   }
 
   .button {
-    font-size: 1rem;
+    font-size: 1.8rem;
     padding: 0.75rem 1.5rem;
     width: 200px;
   }
@@ -76,11 +76,44 @@
 
 @media (max-width: 680px) {
   .button {
-    bottom: 10%;
+    bottom: 7%;
   }
 }
-@media (max-width: 470px) {
+@media (max-width: 525px) {
   .button {
-    bottom: 18%;
+    bottom: 11%;
+  }
+}
+
+@media (max-width: 477px) {
+   .button {
+    font-size: 1.4rem;
+    padding: 0.75rem 1.5rem;
+    width: 200px;
+  }
+  .button {
+    bottom: 14%;
+  }
+}
+
+@media (max-width: 477px) {
+  
+  .button {
+    bottom: 16%;
+  }
+}
+
+@media (max-width: 414px) {
+  
+  .button {
+    bottom: 16%;
+  }
+}
+
+
+@media (max-width: 375px) {
+  
+  .button {
+    bottom: 10%;
   }
 }
