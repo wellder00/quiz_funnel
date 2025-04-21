@@ -13,8 +13,8 @@
 }
 
 p {
-  font-size: 1.2rem;
-  color: #ff6b00;
+  font-size: 1.1rem;
+  color: #120549;
 }
 
 .imgContainer {
@@ -48,14 +48,16 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
   gap: 10px;
-  background-color: #bfb7b7;
+  background-color: #ac8fe1;
   padding: 10px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  width: 150px;
+  width: 200px;
+  text-decoration: none;
 
   &:hover {
     transform: translateY(-5px);
@@ -63,11 +65,45 @@ p {
   }
 }
 
+.appItem:link,
+.appItem:visited,
+.appItem:hover,
+.appItem:active,
+.appItem:focus {
+  text-decoration: none;
+  color: inherit;
+}
+
 .appIcon {
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
   border-radius: 8px;
   transition: transform 0.3s ease;
+  margin-bottom: 0;
+}
+
+.pulse {
+  border: 2px solid #120549;
+  box-sizing: border-box;
+  animation: pulse-border 1.2s infinite;
+  border-radius: 8px;
+}
+
+@keyframes pulse-border {
+  0% {
+    box-shadow: 0 0 0 0 #120549;
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(255, 107, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 0, 0);
+  }
+}
+
+.appName {
+  margin: 0;
+  padding: 0;
 }
 
 .blurred {
@@ -76,14 +112,15 @@ p {
 }
 
 .stars {
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: gold;
+  margin: 0;
 }
 
 .recommendationButton {
   background-color: #ff6b00;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding: 1rem 2rem;
   border: none;
   border-radius: 16px;
@@ -99,49 +136,55 @@ p {
   }
 }
 
-@media (max-width: 1110px) {
-  .appItem {
-    width: 140px;
-  }
-
-  .appName {
-    padding: 0;
-    margin: 0;
-  }
-}
-
-@media (max-width: 914px) {
+/* --- Adaptive styles --- */
+@media (max-width: 1045px) {
   .appList {
     bottom: 2%;
   }
-
   .appItem {
-    width: 100px;
+    width: 140px;
   }
-
   p {
     font-size: 0.8rem;
+  }
+  .appIcon {
+    width: 70px;
+    height: 70px;
   }
 }
 
-@media (max-width: 630px) {
+@media (max-width: 819px) {
   .appItem {
-    width: 80px;
-    gap: 2px;
+    width: 150px;
+    height: 160px;
+    gap: 0;
     padding: 5px;
   }
-
   .appIcon {
-    margin-bottom: 2px;
+    margin-bottom: 0;
   }
-
+  .appName {
+    margin: 0;
+    padding: 0;
+  }
   .stars {
-    margin-top: 2px;
-    font-size: 0.8rem;
+    margin: 0;
   }
-
   p {
     font-size: 0.6rem;
     margin: 0;
+  }
+}
+
+@media (max-width: 680px) {
+  .appList {
+    bottom: 2%;
+  }
+  .appItem {
+    width: 200px;
+    height: 125px;
+  }
+  p {
+    font-size: 0.6rem;
   }
 }

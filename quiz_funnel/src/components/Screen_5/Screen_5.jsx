@@ -4,7 +4,7 @@ import pc5 from "/pc5.png"
 import phone5 from "/phone5.png"
 
 const Screen_5 = () => {
-  const isMobile = window.innerWidth <= 726
+  const isMobile = window.innerWidth <= 680
   const imageSrc = isMobile ? phone5 : pc5
   const [isImageLoaded, setIsImageLoaded] = useState(false)
 
@@ -21,21 +21,23 @@ const Screen_5 = () => {
           alt="Variant"
         />
         <div className={styles.appList}>
-          <div className={styles.appItem}>
-            <a
-              href="https://apps.apple.com/us/app/bedtime-books-stories/id6477703850"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                className={styles.appIcon}
-                src="./icon.webp"
-                alt="Fairy tales"
-              />
-            </a>
-            <p className={styles.appName}>Bedtime Books－Stories</p>
+          <a
+            className={styles.appItem}
+            href="https://apps.apple.com/us/app/bedtime-books-stories/id6477703850"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              className={`${styles.appIcon} ${styles.pulse}`}
+              src="./icon.webp"
+              alt="Fairy tales"
+            />
+
+            <p className={`${styles.appName} ${styles.pulseText}`}>
+              Bedtime Books－Stories
+            </p>
             <div className={styles.stars}>★★★★★</div>
-          </div>
+          </a>
           <div className={styles.appItem}>
             <img
               src="./icon2.jpg"
