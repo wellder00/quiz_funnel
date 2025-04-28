@@ -22,17 +22,16 @@ const Screen_5 = () => {
         />
         <div className={styles.appList}>
           <a
-            className={styles.appItem}
+            className={`${styles.appItem} ${styles.pulse}`}
             href="https://apps.apple.com/us/app/bedtime-books-stories/id6477703850"
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              className={`${styles.appIcon} ${styles.pulse}`}
+              className={styles.appIcon}
               src="./icon.webp"
               alt="Fairy tales"
             />
-
             <p className={`${styles.appName} ${styles.pulseText}`}>
               Bedtime Books－Stories
             </p>
