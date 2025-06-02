@@ -1,8 +1,26 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import styles from "./Screen_3.module.scss"
-import phone3 from "/phone3.png"
-import pc3 from "/pc3.png"
+import { buttonsNames } from "../../constants/const"
+
+const getLang = () => {
+  const lang = (
+    navigator.language ||
+    navigator.userLanguage ||
+    "en"
+  ).toLowerCase()
+  if (lang.startsWith("ru")) return "ru"
+  if (lang.startsWith("es")) return "es"
+  if (lang.startsWith("en")) return "en"
+  return "en"
+}
+
+const getImageSrc = (lang, isMobile) => {
+  if (lang === "ru") return isMobile ? "/phone3.png" : "/pc3.png"
+  if (lang === "es") return isMobile ? "/ES/phone3_es.png" : "/ES/pc3_es.png"
+  if (lang === "en") return isMobile ? "/EN/phone3_en.png" : "/EN/pc3_en.png"
+  return isMobile ? "/EN/phone3_en.png" : "/EN/pc3.png"
+}
 
 const Screen_3 = () => {
   const navigate = useNavigate()
@@ -16,7 +34,9 @@ const Screen_3 = () => {
   }
 
   const isMobile = window.innerWidth <= 680
-  const imageSrc = isMobile ? phone3 : pc3
+  const lang = getLang()
+  const imageSrc = getImageSrc(lang, isMobile)
+  const buttonText = buttonsNames[lang]?.screen3 || buttonsNames.en.screen3
 
   return (
     <div className={styles.container}>
@@ -46,17 +66,19 @@ const Screen_3 = () => {
           {/* Преобразуем значение в часы и минуты */}
         </div>
         <button className={styles.button} type="button" onClick={handleNext}>
-          Далее
+          {buttonText}
         </button>
-        <ProgressBar progress={progress} />
+        <ProgressBar progress={progress} lang={lang} />
       </div>
     </div>
   )
 }
 
-const ProgressBar = ({ progress }) => (
+const ProgressBar = ({ progress, lang }) => (
   <div className={styles.progressBar}>
-    <div className={styles.progressText}>Прогресс по заполнению</div>
+    <div className={styles.progressText}>
+      {buttonsNames.progressBar[lang] || buttonsNames.progressBar.en}
+    </div>
     <div className={styles.progressOuter}>
       <div className={styles.progressInner} style={{ width: `${progress}%` }}>
         {progress}%

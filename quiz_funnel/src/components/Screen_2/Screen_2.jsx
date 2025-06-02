@@ -1,8 +1,26 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import styles from "./Screen_2.module.scss"
-import pc2 from "/pc2.png"
-import phone2 from "/phone2.png"
+import { buttonsNames } from "../../constants/const"
+
+const getLang = () => {
+  const lang = (
+    navigator.language ||
+    navigator.userLanguage ||
+    "en"
+  ).toLowerCase()
+  if (lang.startsWith("ru")) return "ru"
+  if (lang.startsWith("es")) return "es"
+  if (lang.startsWith("en")) return "en"
+  return "en"
+}
+
+const getImageSrc = (lang, isMobile) => {
+  if (lang === "ru") return isMobile ? "/phone2.png" : "/pc2.png"
+  if (lang === "es") return isMobile ? "/ES/phone2_es.png" : "/ES/pc2_es.png"
+  if (lang === "en") return isMobile ? "/EN/phone2_en.png" : "/EN/pc2_en.png"
+  return isMobile ? "/EN/phone2_en.png" : "/EN/pc2.png"
+}
 
 const Screen_2 = () => {
   const navigate = useNavigate()
@@ -16,7 +34,11 @@ const Screen_2 = () => {
   }
 
   const isMobile = window.innerWidth <= 680
-  const imageSrc = isMobile ? phone2 : pc2
+  const lang = getLang()
+  const imageSrc = getImageSrc(lang, isMobile)
+  const yesText =
+    buttonsNames[lang]?.screen2?.yes || buttonsNames.en.screen2.yes
+  const noText = buttonsNames[lang]?.screen2?.no || buttonsNames.en.screen2.no
 
   return (
     <div
@@ -36,25 +58,27 @@ const Screen_2 = () => {
             type="button"
             onClick={handleSubmit}
           >
-            Да
+            {yesText}
           </button>
           <button
             className={styles.button}
             type="button"
             onClick={handleSubmit}
           >
-            Нет
+            {noText}
           </button>
         </div>
-        <ProgressBar progress={progress} />
+        <ProgressBar progress={progress} lang={lang} />
       </div>
     </div>
   )
 }
 
-const ProgressBar = ({ progress }) => (
+const ProgressBar = ({ progress, lang }) => (
   <div className={styles.progressBar}>
-    <div className={styles.progressText}>Прогресс по заполнению</div>
+    <div className={styles.progressText}>
+      {buttonsNames.progressBar[lang] || buttonsNames.progressBar.en}
+    </div>
     <div className={styles.progressOuter}>
       <div className={styles.progressInner} style={{ width: `${progress}%` }}>
         {progress}%

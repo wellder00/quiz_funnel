@@ -1,13 +1,31 @@
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import styles from "./Screen_6.module.scss"
-import pc4 from "/pc4.png"
-import phone4 from "/phone4.png"
+import { buttonsNames } from "../../constants/const"
+
+const getLang = () => {
+  const lang = (
+    navigator.language ||
+    navigator.userLanguage ||
+    "en"
+  ).toLowerCase()
+  if (lang.startsWith("ru")) return "ru"
+  if (lang.startsWith("es")) return "es"
+  if (lang.startsWith("en")) return "en"
+  return "en"
+}
+
+const getImageSrc = (lang, isMobile) => {
+  if (lang === "ru") return isMobile ? "/phone4.png" : "/pc4.png"
+  if (lang === "es") return isMobile ? "/ES/phone4_es.png" : "/ES/pc4_es.png"
+  if (lang === "en") return isMobile ? "/EN/phone4_en.png" : "/EN/pc4_en.png"
+  return isMobile ? "/EN/phone4_en.png" : "/EN/pc4.png"
+}
 
 const Screen_6 = () => {
   const navigate = useNavigate()
   const [isImageLoaded, setIsImageLoaded] = useState(false)
-  const [progress, setProgress] = useState(80)
+  const [progress] = useState(80)
   const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = (event) => {
@@ -19,7 +37,9 @@ const Screen_6 = () => {
   }
 
   const isMobile = window.innerWidth <= 680
-  const imageSrc = isMobile ? phone4 : pc4
+  const lang = getLang()
+  const imageSrc = getImageSrc(lang, isMobile)
+  const btns = buttonsNames[lang]?.screen5 || buttonsNames.en.screen5
 
   return (
     <div
@@ -44,32 +64,33 @@ const Screen_6 = () => {
                 type="button"
                 onClick={handleSubmit}
               >
-                Включаю мультфильм
+                {btns.topRight}
               </button>
               <button
                 className={`${styles.button} ${styles.topRight}`}
                 type="button"
                 onClick={handleSubmit}
               >
-                Читаю сказку
+                {btns.topLeft}
               </button>
               <button
                 className={`${styles.button} ${styles.bottomLeft}`}
                 type="button"
                 onClick={handleSubmit}
               >
-                Ничего не делаю
+                {btns.bottomLeft}
               </button>
               <button
                 className={`${styles.button} ${styles.bottomRight}`}
                 type="button"
                 onClick={handleSubmit}
               >
-                Свой вариант
+                {btns.bottomRight}
               </button>
               <div className={styles.progressBar}>
                 <div className={styles.progressText}>
-                  Прогресс по заполнению
+                  {buttonsNames.progressBar[lang] ||
+                    buttonsNames.progressBar.en}
                 </div>
                 <div className={styles.progressOuter}>
                   <div
