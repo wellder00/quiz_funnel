@@ -32,7 +32,7 @@ const getAppNames = (lang) => {
   if (lang === "ru") {
     return ["Bedtime Books－Stories", "DreamTale Library", "Moonlight Reads"]
   }
-  // en и по умолчанию
+
   return ["Bedtime Books－Stories", "DreamTale Library", "Moonlight Reads"]
 }
 
@@ -42,6 +42,11 @@ const Screen_5 = () => {
   const imageSrc = getImageSrc(lang, isMobile)
   const [isImageLoaded, setIsImageLoaded] = useState(false)
   const appNames = getAppNames(lang)
+
+  // Обработчик для перехода в App Store
+  const handleGoToAppStore = () => {
+    if (window.fbq) window.fbq("trackCustom", "GoToAppStore")
+  }
 
   return (
     <div className={styles.container}>
@@ -61,6 +66,7 @@ const Screen_5 = () => {
             href="https://apps.apple.com/us/app/bedtime-books-stories/id6477703850"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={handleGoToAppStore} // добавлено событие
           >
             <img
               className={styles.appIcon}

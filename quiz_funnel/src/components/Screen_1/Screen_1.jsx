@@ -17,10 +17,8 @@ const getLang = () => {
 
 const getImageSrc = (lang, isMobile) => {
   if (lang === "ru") return isMobile ? "/phone1.png" : "/pc1.png"
-  if (lang === "es")
-    return isMobile ? "/ES/phone1_es.png" : "/ES/pc1_es.png"
-  if (lang === "en")
-    return isMobile ? "/EN/phone1_en.png" : "/EN/pc1_en.png"
+  if (lang === "es") return isMobile ? "/ES/phone1_es.png" : "/ES/pc1_es.png"
+  if (lang === "en") return isMobile ? "/EN/phone1_en.png" : "/EN/pc1_en.png"
   return isMobile ? "/EN/phone1_en.png" : "/EN/pc1.png"
 }
 
@@ -31,6 +29,7 @@ const Screen_1 = () => {
   const handleSubmit = (event) => {
     setIsImageLoaded(false)
     event.preventDefault()
+    if (window.fbq) window.fbq("trackCustom", "StartQuiz")
     navigate("/screen2")
   }
 
